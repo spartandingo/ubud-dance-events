@@ -5,21 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embodied Events</title>
     <meta name="description" content="Dance, tantra, rope, and movement events in Bali and beyond. Subscribe to stay updated.">
+    <meta name="theme-color" content="#1a1a2e">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0f0f0f;
-            --card: #1a1a1a;
-            --border: #2a2a2a;
-            --text: #e5e5e5;
-            --text-muted: #888;
-            --accent: #f97316;
-            --accent-hover: #fb923c;
-            --success: #22c55e;
+            /* Colors */
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #252542;
+            --bg-tertiary: #2d2d4a;
+            --border: #3d3d5c;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6b6b80;
+            
+            /* Category colors */
             --dance: #a855f7;
+            --dance-bg: rgba(168, 85, 247, 0.15);
             --tantra: #ec4899;
-            --rope: #ef4444;
+            --tantra-bg: rgba(236, 72, 153, 0.15);
+            --rope: #f97316;
+            --rope-bg: rgba(249, 115, 22, 0.15);
+            
+            /* Accent */
+            --accent: #60a5fa;
+            --accent-hover: #93c5fd;
+            --success: #22c55e;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            
+            /* Typography */
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'SF Mono', Menlo, Monaco, monospace;
+            
+            /* Borders */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
         }
         
         * {
@@ -28,127 +57,183 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem;
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
+            min-height: 100vh;
         }
         
+        /* Layout */
         .container {
-            max-width: 700px;
-            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: var(--space-xl);
         }
         
+        /* Header */
         header {
             text-align: center;
-            margin-bottom: 3rem;
+            padding: var(--space-2xl) 0;
         }
         
-        .emoji-header {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        .logo {
+            font-size: 3.5rem;
+            margin-bottom: var(--space-md);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
         }
         
         h1 {
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--dance), var(--tantra), var(--accent));
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--dance), var(--tantra), var(--rope));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin-bottom: var(--space-sm);
         }
         
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
+        .tagline {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
         }
         
+        /* Cards */
         .card {
-            background: var(--card);
+            background: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            transition: border-color 0.2s ease;
         }
         
-        .card h2 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+        .card:hover {
+            border-color: var(--text-muted);
+        }
+        
+        .card-header {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
         }
         
+        .card-header h2 {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+        
+        /* Categories */
         .categories {
             display: flex;
-            gap: 0.75rem;
+            gap: var(--space-sm);
             flex-wrap: wrap;
-            margin-bottom: 1.5rem;
         }
         
-        .category-tag {
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
+        .category {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
             font-weight: 500;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         
-        .category-dance { background: rgba(168, 85, 247, 0.2); color: var(--dance); border: 1px solid var(--dance); }
-        .category-tantra { background: rgba(236, 72, 153, 0.2); color: var(--tantra); border: 1px solid var(--tantra); }
-        .category-rope { background: rgba(239, 68, 68, 0.2); color: var(--rope); border: 1px solid var(--rope); }
+        .category:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
         
+        .category-dance {
+            background: var(--dance-bg);
+            color: var(--dance);
+            border: 1px solid var(--dance);
+        }
+        
+        .category-tantra {
+            background: var(--tantra-bg);
+            color: var(--tantra);
+            border: 1px solid var(--tantra);
+        }
+        
+        .category-rope {
+            background: var(--rope-bg);
+            color: var(--rope);
+            border: 1px solid var(--rope);
+        }
+        
+        /* Regions */
         .regions {
             display: flex;
-            gap: 0.5rem;
+            gap: var(--space-sm);
             flex-wrap: wrap;
-            margin-bottom: 1rem;
+            margin-top: var(--space-md);
         }
         
-        .region-tag {
-            padding: 0.25rem 0.75rem;
-            background: var(--border);
-            border-radius: 12px;
+        .region {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-sm);
             font-size: 0.8rem;
             color: var(--text-muted);
         }
         
+        /* Subscribe section */
         .subscribe-url {
-            background: var(--bg);
+            background: var(--bg-primary);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1rem;
-            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            font-family: var(--font-mono);
             font-size: 0.85rem;
-            word-break: break-all;
-            margin-bottom: 1rem;
             color: var(--accent);
+            word-break: break-all;
+            margin-bottom: var(--space-md);
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+        }
+        
+        .subscribe-url:hover {
+            border-color: var(--accent);
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
         }
         
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
+            justify-content: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
             font-weight: 600;
-            font-size: 0.95rem;
             text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
             border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
         
         .btn-primary {
             background: var(--accent);
-            color: white;
+            color: var(--bg-primary);
         }
         
         .btn-primary:hover {
@@ -157,53 +242,63 @@
         }
         
         .btn-secondary {
-            background: var(--border);
-            color: var(--text);
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
         }
         
         .btn-secondary:hover {
-            background: #333;
-        }
-        
-        .btn-group {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-        
-        .instructions {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-        }
-        
-        .instructions h3 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--text-muted);
-        }
-        
-        .instructions ol {
-            padding-left: 1.25rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        
-        .instructions li {
-            margin-bottom: 0.5rem;
+            background: var(--border);
         }
         
         .copied {
-            color: var(--success) !important;
+            background: var(--success) !important;
         }
         
+        /* Instructions */
+        .instructions {
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--border);
+        }
+        
+        .instructions summary {
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: var(--space-sm) 0;
+        }
+        
+        .instructions summary:hover {
+            color: var(--text-primary);
+        }
+        
+        .instructions ol {
+            margin-top: var(--space-md);
+            padding-left: var(--space-lg);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .instructions li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .instructions strong {
+            color: var(--text-primary);
+        }
+        
+        /* Event list */
         .event-list {
             list-style: none;
         }
         
         .event-item {
-            padding: 1rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            padding: var(--space-md) 0;
             border-bottom: 1px solid var(--border);
         }
         
@@ -211,19 +306,29 @@
             border-bottom: none;
         }
         
+        .event-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        
+        .event-content {
+            flex: 1;
+        }
+        
         .event-name {
             font-weight: 600;
-            margin-bottom: 0.25rem;
+            margin-bottom: var(--space-xs);
         }
         
-        .event-meta {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+        .event-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
         }
         
+        /* Footer */
         footer {
-            margin-top: 3rem;
             text-align: center;
+            padding: var(--space-2xl) 0 var(--space-xl);
             color: var(--text-muted);
             font-size: 0.85rem;
         }
@@ -237,13 +342,22 @@
             text-decoration: underline;
         }
         
-        @media (max-width: 480px) {
-            body {
-                padding: 1rem;
+        .heart {
+            color: var(--tantra);
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: var(--space-md);
             }
             
             h1 {
                 font-size: 2rem;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
             }
             
             .btn-group {
@@ -251,89 +365,131 @@
             }
             
             .btn {
-                justify-content: center;
+                width: 100%;
             }
         }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card {
+            animation: fadeIn 0.4s ease forwards;
+        }
+        
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="emoji-header">💃🕯️🪢</div>
+            <div class="logo">💃🕯️🪢</div>
             <h1>Embodied Events</h1>
-            <p class="subtitle">Dance, tantra, rope & movement events</p>
+            <p class="tagline">Dance, tantra, rope & movement events</p>
         </header>
         
-        <div class="card">
-            <h2>🏷️ Categories</h2>
-            <div class="categories">
-                <span class="category-tag category-dance">💃 Dance & Movement</span>
-                <span class="category-tag category-tantra">🕯️ Tantra</span>
-                <span class="category-tag category-rope">🪢 Rope / Shibari</span>
-            </div>
-            <div class="regions">
-                <span class="region-tag">📍 Ubud, Bali</span>
-                <span class="region-tag">📍 Bali (wider)</span>
-                <span class="region-tag">📍 Northern Rivers, NSW</span>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h2>📲 Subscribe to Calendar</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">
-                Add this URL to your calendar app to get automatic updates:
-            </p>
-            <div class="subscribe-url" id="subscribeUrl">
-                webcal://spartandingo.github.io/ubud-dance-events/ubud-dance-events.ics
-            </div>
-            <div class="btn-group">
-                <button class="btn btn-primary" onclick="copyUrl()">
-                    <span id="copyText">📋 Copy URL</span>
-                </button>
-                <a class="btn btn-secondary" href="ubud-dance-events.ics" download>
-                    ⬇️ Download .ics
-                </a>
+        <main>
+            <div class="card">
+                <div class="card-header">
+                    <span>🏷️</span>
+                    <h2>Categories</h2>
+                </div>
+                <div class="categories">
+                    <span class="category category-dance">💃 Dance & Movement</span>
+                    <span class="category category-tantra">🕯️ Tantra</span>
+                    <span class="category category-rope">🪢 Rope / Shibari</span>
+                </div>
+                <div class="regions">
+                    <span class="region">📍 Ubud, Bali</span>
+                    <span class="region">📍 Bali (wider)</span>
+                    <span class="region">📍 Northern Rivers, NSW</span>
+                </div>
             </div>
             
-            <div class="instructions">
-                <h3>How to subscribe</h3>
-                <ol>
-                    <li><strong>iPhone/iPad:</strong> Copy URL → Settings → Calendar → Accounts → Add → Subscribed Calendar → Paste URL</li>
-                    <li><strong>Google Calendar:</strong> Settings → Add calendar → From URL → Paste URL</li>
-                    <li><strong>Mac Calendar:</strong> File → New Calendar Subscription → Paste URL</li>
-                </ol>
+            <div class="card">
+                <div class="card-header">
+                    <span>📲</span>
+                    <h2>Subscribe to Calendar</h2>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: var(--space-md); font-size: 0.9rem;">
+                    Add this URL to your calendar app for automatic updates:
+                </p>
+                <div class="subscribe-url" id="subscribeUrl" onclick="copyUrl()">
+                    webcal://spartandingo.github.io/ubud-dance-events/ubud-dance-events.ics
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="copyBtn" onclick="copyUrl()">
+                        📋 Copy URL
+                    </button>
+                    <a class="btn btn-secondary" href="ubud-dance-events.ics" download>
+                        ⬇️ Download .ics
+                    </a>
+                </div>
+                
+                <details class="instructions">
+                    <summary>How to subscribe →</summary>
+                    <ol>
+                        <li><strong>iPhone/iPad:</strong> Copy URL → Settings → Calendar → Accounts → Add → Subscribed Calendar → Paste URL</li>
+                        <li><strong>Google Calendar:</strong> Settings → Add calendar → From URL → Paste URL</li>
+                        <li><strong>Mac Calendar:</strong> File → New Calendar Subscription → Paste URL</li>
+                    </ol>
+                </details>
             </div>
-        </div>
-        
-        <div class="card">
-            <h2>🗓️ What's Included</h2>
-            <ul class="event-list">
-                <li class="event-item">
-                    <div class="event-name">Ecstatic Dance</div>
-                    <div class="event-meta">RESONANZ, Dance Temple, and more</div>
-                </li>
-                <li class="event-item">
-                    <div class="event-name">Contact Improvisation</div>
-                    <div class="event-meta">Dissolve & Play, Contact Dojo, CI jams</div>
-                </li>
-                <li class="event-item">
-                    <div class="event-name">Movement Classes</div>
-                    <div class="event-meta">5Rhythms, Gaga, somatic workshops</div>
-                </li>
-                <li class="event-item">
-                    <div class="event-name">Tantra Events</div>
-                    <div class="event-meta">Temples, pujas, sacred gatherings</div>
-                </li>
-                <li class="event-item">
-                    <div class="event-name">Rope / Shibari</div>
-                    <div class="event-meta">In.Ropes jams and workshops</div>
-                </li>
-            </ul>
-        </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <span>🗓️</span>
+                    <h2>What's Included</h2>
+                </div>
+                <ul class="event-list">
+                    <li class="event-item">
+                        <span class="event-icon">🎵</span>
+                        <div class="event-content">
+                            <div class="event-name">Ecstatic Dance</div>
+                            <div class="event-desc">RESONANZ, Dance Temple, Awakened Dreamers</div>
+                        </div>
+                    </li>
+                    <li class="event-item">
+                        <span class="event-icon">🤸</span>
+                        <div class="event-content">
+                            <div class="event-name">Contact Improvisation</div>
+                            <div class="event-desc">Dissolve & Play, Contact Dojo, CI jams</div>
+                        </div>
+                    </li>
+                    <li class="event-item">
+                        <span class="event-icon">🧘</span>
+                        <div class="event-content">
+                            <div class="event-name">Movement Classes</div>
+                            <div class="event-desc">5Rhythms, Gaga, somatic workshops</div>
+                        </div>
+                    </li>
+                    <li class="event-item">
+                        <span class="event-icon">🕯️</span>
+                        <div class="event-content">
+                            <div class="event-name">Tantra Events</div>
+                            <div class="event-desc">Temples, pujas, sacred gatherings</div>
+                        </div>
+                    </li>
+                    <li class="event-item">
+                        <span class="event-icon">🪢</span>
+                        <div class="event-content">
+                            <div class="event-name">Rope / Shibari</div>
+                            <div class="event-desc">In.Ropes jams and workshops</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </main>
         
         <footer>
             <p>Events aggregated from community groups in Bali & NSW</p>
-            <p style="margin-top: 0.5rem;">🤙 Powered by <a href="https://github.com/clawdbot/clawdbot">Clawdbot</a></p>
+            <p style="margin-top: var(--space-sm);">
+                Made with <span class="heart">♥</span> by <a href="https://github.com/clawdbot/clawdbot">Clawdbot</a>
+            </p>
         </footer>
     </div>
     
@@ -341,7 +497,7 @@
         function copyUrl() {
             const url = document.getElementById('subscribeUrl').textContent.trim();
             navigator.clipboard.writeText(url).then(() => {
-                const btn = document.getElementById('copyText');
+                const btn = document.getElementById('copyBtn');
                 btn.textContent = '✓ Copied!';
                 btn.classList.add('copied');
                 setTimeout(() => {
