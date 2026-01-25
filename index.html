@@ -30,15 +30,8 @@
             --mono: 'Space Mono', monospace;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         
         body {
             font-family: var(--serif);
@@ -48,7 +41,6 @@
             overflow-x: hidden;
         }
         
-        /* Atmospheric background */
         .atmosphere {
             position: fixed;
             inset: 0;
@@ -75,7 +67,6 @@
             100% { transform: translate(-5%, 3%) rotate(2deg); }
         }
         
-        /* Grain overlay */
         .grain {
             position: fixed;
             inset: 0;
@@ -85,7 +76,6 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
         }
         
-        /* Layout */
         .container {
             position: relative;
             z-index: 1;
@@ -94,15 +84,13 @@
             padding: 4rem 2rem;
         }
         
-        /* Header */
         header {
             text-align: center;
-            margin-bottom: 6rem;
-            position: relative;
+            margin-bottom: 4rem;
         }
         
         .sigil {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
             display: flex;
             justify-content: center;
@@ -114,7 +102,6 @@
             display: inline-block;
             animation: float 3s ease-in-out infinite;
         }
-        
         .sigil span:nth-child(1) { animation-delay: 0s; }
         .sigil span:nth-child(2) { animation-delay: 0.3s; }
         .sigil span:nth-child(3) { animation-delay: 0.6s; }
@@ -126,7 +113,7 @@
         
         h1 {
             font-family: var(--serif);
-            font-size: clamp(3rem, 10vw, 5rem);
+            font-size: clamp(2.5rem, 8vw, 4rem);
             font-weight: 400;
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -136,16 +123,13 @@
         
         .tagline {
             font-family: var(--mono);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--smoke);
         }
         
-        /* Sections */
-        section {
-            margin-bottom: 5rem;
-        }
+        section { margin-bottom: 4rem; }
         
         .section-label {
             font-family: var(--mono);
@@ -166,6 +150,108 @@
             background: linear-gradient(90deg, var(--edge), transparent);
         }
         
+        /* Day headers */
+        .day-header {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--edge);
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+        }
+        
+        .day-header:first-of-type {
+            margin-top: 0;
+        }
+        
+        .day-date {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--smoke);
+            letter-spacing: 0.1em;
+        }
+        
+        .today {
+            color: var(--ember);
+        }
+        
+        .today::after {
+            content: 'TODAY';
+            font-family: var(--mono);
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
+            background: var(--ember);
+            color: var(--void);
+            padding: 0.2rem 0.5rem;
+            margin-left: 0.75rem;
+            vertical-align: middle;
+        }
+        
+        /* Event cards */
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: var(--edge);
+        }
+        
+        .event-card {
+            background: var(--deep);
+            padding: 1.25rem 1.5rem;
+            display: grid;
+            grid-template-columns: 4rem 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        
+        .event-card:hover {
+            background: var(--surface);
+        }
+        
+        .event-time {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--smoke);
+        }
+        
+        .event-info {
+            min-width: 0;
+        }
+        
+        .event-name {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .event-meta {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--smoke);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .event-venue {
+            color: var(--bone);
+        }
+        
+        .event-price {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--whisper);
+            white-space: nowrap;
+        }
+        
         /* Categories */
         .categories {
             display: grid;
@@ -177,39 +263,18 @@
         
         .category {
             background: var(--deep);
-            padding: 2rem 1.5rem;
+            padding: 1.5rem 1rem;
             text-align: center;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: default;
         }
         
-        .category:hover {
-            background: var(--surface);
-        }
+        .category:hover { background: var(--surface); }
         
-        .category-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        
+        .category-icon { font-size: 1.75rem; margin-bottom: 0.75rem; display: block; }
+        .category-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; }
         .category-dance:hover { box-shadow: inset 0 -3px 0 var(--violet); }
         .category-tantra:hover { box-shadow: inset 0 -3px 0 var(--rose); }
         .category-rope:hover { box-shadow: inset 0 -3px 0 var(--ember); }
-        
-        .category-name {
-            font-family: var(--serif);
-            font-size: 1.25rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-        
-        .category-desc {
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            color: var(--smoke);
-            letter-spacing: 0.1em;
-        }
         
         /* Regions */
         .regions {
@@ -224,13 +289,10 @@
             font-size: 0.7rem;
             color: var(--smoke);
             letter-spacing: 0.15em;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
         
         .region::before {
-            content: '◈';
+            content: '◈ ';
             color: var(--whisper);
         }
         
@@ -238,64 +300,55 @@
         .subscribe-card {
             background: var(--deep);
             border: 1px solid var(--edge);
-            padding: 3rem;
+            padding: 2.5rem;
             position: relative;
-            overflow: hidden;
         }
         
         .subscribe-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--ember), transparent);
         }
         
         .subscribe-title {
             font-family: var(--serif);
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 400;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
         
         .subscribe-desc {
             font-family: var(--mono);
             font-size: 0.7rem;
             color: var(--smoke);
-            letter-spacing: 0.05em;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .url-display {
             background: var(--void);
             border: 1px solid var(--edge);
-            padding: 1.25rem;
+            padding: 1rem;
             font-family: var(--mono);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--ember);
             word-break: break-all;
             cursor: pointer;
             transition: border-color 0.3s ease;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
         
-        .url-display:hover {
-            border-color: var(--ember);
-        }
+        .url-display:hover { border-color: var(--ember); }
         
-        .actions {
-            display: flex;
-            gap: 1rem;
-        }
+        .actions { display: flex; gap: 1rem; flex-wrap: wrap; }
         
         .btn {
             font-family: var(--mono);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            padding: 1rem 2rem;
+            padding: 0.875rem 1.5rem;
             border: 1px solid var(--edge);
             background: transparent;
             color: var(--cream);
@@ -304,7 +357,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
         
         .btn:hover {
@@ -319,125 +372,47 @@
             color: var(--void);
         }
         
-        .btn-primary:hover {
-            background: var(--cream);
-            border-color: var(--cream);
-        }
+        .copied { background: #22c55e !important; border-color: #22c55e !important; }
         
-        .copied {
-            background: #22c55e !important;
-            border-color: #22c55e !important;
-        }
-        
-        /* Events */
-        .events-grid {
-            display: grid;
-            gap: 1px;
-            background: var(--edge);
-        }
-        
-        .event {
-            background: var(--deep);
-            padding: 1.5rem 2rem;
-            display: grid;
-            grid-template-columns: 2rem 1fr;
-            gap: 1.5rem;
-            align-items: start;
-            transition: background 0.3s ease;
-        }
-        
-        .event:hover {
-            background: var(--surface);
-        }
-        
-        .event-icon {
-            font-size: 1.25rem;
-            opacity: 0.8;
-        }
-        
-        .event-name {
-            font-family: var(--serif);
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-        
-        .event-desc {
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            color: var(--smoke);
-            letter-spacing: 0.05em;
-        }
-        
-        /* Footer */
         footer {
             text-align: center;
-            padding-top: 4rem;
+            padding-top: 3rem;
             border-top: 1px solid var(--edge);
-        }
-        
-        .footer-text {
             font-family: var(--mono);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: var(--whisper);
             letter-spacing: 0.1em;
         }
         
-        .footer-text a {
+        footer a {
             color: var(--smoke);
             text-decoration: none;
-            transition: color 0.3s ease;
         }
+        footer a:hover { color: var(--ember); }
         
-        .footer-text a:hover {
-            color: var(--ember);
-        }
-        
-        /* Responsive */
         @media (max-width: 640px) {
-            .container {
-                padding: 3rem 1.5rem;
-            }
-            
-            .categories {
-                grid-template-columns: 1fr;
-            }
-            
-            .subscribe-card {
-                padding: 2rem;
-            }
-            
-            .actions {
-                flex-direction: column;
-            }
-            
-            .regions {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
+            .container { padding: 2.5rem 1.25rem; }
+            .categories { grid-template-columns: 1fr; }
+            .event-card { grid-template-columns: 1fr; gap: 0.5rem; }
+            .event-time { order: 1; }
+            .event-info { order: 0; }
+            .event-price { order: 2; }
+            .subscribe-card { padding: 1.75rem; }
+            .actions { flex-direction: column; }
+            .regions { flex-direction: column; align-items: center; gap: 0.75rem; }
         }
         
-        /* Entrance animations */
         @keyframes reveal {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        header, section {
-            animation: reveal 0.8s ease forwards;
-        }
-        
-        section:nth-of-type(1) { animation-delay: 0.2s; }
-        section:nth-of-type(2) { animation-delay: 0.4s; }
-        section:nth-of-type(3) { animation-delay: 0.6s; }
-        section:nth-of-type(4) { animation-delay: 0.8s; }
+        header, section { animation: reveal 0.8s ease forwards; }
+        section:nth-of-type(1) { animation-delay: 0.1s; }
+        section:nth-of-type(2) { animation-delay: 0.2s; }
+        section:nth-of-type(3) { animation-delay: 0.3s; }
+        section:nth-of-type(4) { animation-delay: 0.4s; }
+        section:nth-of-type(5) { animation-delay: 0.5s; }
     </style>
 </head>
 <body>
@@ -456,22 +431,155 @@
         </header>
         
         <section>
+            <div class="section-label">This Week · Bali</div>
+            
+            <h3 class="day-header today">Monday <span class="day-date">Jan 26</span></h3>
+            <div class="events-list">
+                <div class="event-card">
+                    <span class="event-time">6pm</span>
+                    <div class="event-info">
+                        <div class="event-name">Dance Temple</div>
+                        <div class="event-meta"><span class="event-venue">Paradiso</span></div>
+                    </div>
+                    <span class="event-price">200k</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-time">6pm</span>
+                    <div class="event-info">
+                        <div class="event-name">Contact Dojo Jam</div>
+                        <div class="event-meta"><span class="event-venue">Moksa Ubud</span> · Silent jam</div>
+                    </div>
+                    <span class="event-price">150k</span>
+                </div>
+            </div>
+            
+            <h3 class="day-header">Tuesday <span class="day-date">Jan 27</span></h3>
+            <div class="events-list">
+                <div class="event-card">
+                    <span class="event-time">3pm</span>
+                    <div class="event-info">
+                        <div class="event-name">5Rhythms</div>
+                        <div class="event-meta"><span class="event-venue">Paradiso</span></div>
+                    </div>
+                    <span class="event-price">180k</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-time">6pm</span>
+                    <div class="event-info">
+                        <div class="event-name">Dissolve :: Eros</div>
+                        <div class="event-meta"><span class="event-venue">Paradiso</span> · Contact improv</div>
+                    </div>
+                    <span class="event-price">180k</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-time">6pm</span>
+                    <div class="event-info">
+                        <div class="event-name">Round Robin Jam</div>
+                        <div class="event-meta"><span class="event-venue">Nalanda</span> · Structured CI</div>
+                    </div>
+                    <span class="event-price">150k</span>
+                </div>
+            </div>
+            
+            <h3 class="day-header">Wednesday <span class="day-date">Jan 28</span></h3>
+            <div class="events-list">
+                <div class="event-card">
+                    <span class="event-time">11am</span>
+                    <div class="event-info">
+                        <div class="event-name">ENTROPIC</div>
+                        <div class="event-meta"><span class="event-venue">Paradiso</span> · Contact improv jam</div>
+                    </div>
+                    <span class="event-price">150k</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-time">3pm</span>
+                    <div class="event-info">
+                        <div class="event-name">Embodied Frequencies</div>
+                        <div class="event-meta"><span class="event-venue">Paradiso</span> · CI + sounding</div>
+                    </div>
+                    <span class="event-price">200k</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-time">6:30pm</span>
+                    <div class="event-info">
+                        <div class="event-name">Antidote</div>
+                        <div class="event-meta"><span class="event-venue">Paradiso</span></div>
+                    </div>
+                    <span class="event-price">300k</span>
+                </div>
+            </div>
+            
+            <h3 class="day-header">Thursday <span class="day-date">Jan 29</span></h3>
+            <div class="events-list">
+                <div class="event-card">
+                    <span class="event-time">11am</span>
+                    <div class="event-info">
+                        <div class="event-name">Dissolve CI Skills Lab</div>
+                        <div class="event-meta"><span class="event-venue">Paradiso</span> · All levels</div>
+                    </div>
+                    <span class="event-price">200k</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-time">11am</span>
+                    <div class="event-info">
+                        <div class="event-name">CI Focus Jam</div>
+                        <div class="event-meta"><span class="event-venue">Nalanda</span> · Contemplative</div>
+                    </div>
+                    <span class="event-price">—</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-time">6pm</span>
+                    <div class="event-info">
+                        <div class="event-name">Resonanz</div>
+                        <div class="event-meta"><span class="event-venue">Paradiso</span> · Ecstatic dance</div>
+                    </div>
+                    <span class="event-price">200k</span>
+                </div>
+            </div>
+            
+            <h3 class="day-header">Saturday <span class="day-date">Jan 31</span></h3>
+            <div class="events-list">
+                <div class="event-card">
+                    <span class="event-time">9am</span>
+                    <div class="event-info">
+                        <div class="event-name">Kinetic CI Class</div>
+                        <div class="event-meta"><span class="event-venue">Paradiso</span></div>
+                    </div>
+                    <span class="event-price">180k</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-time">11am</span>
+                    <div class="event-info">
+                        <div class="event-name">Dissolve & Play</div>
+                        <div class="event-meta"><span class="event-venue">Paradiso</span> · Acro meets somatic</div>
+                    </div>
+                    <span class="event-price">180k</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-time">6:30pm</span>
+                    <div class="event-info">
+                        <div class="event-name">Saturday Polina CI Jam</div>
+                        <div class="event-meta"><span class="event-venue">AmrtaSiddhi</span></div>
+                    </div>
+                    <span class="event-price">—</span>
+                </div>
+            </div>
+        </section>
+        
+        <section>
             <div class="section-label">Practices</div>
             <div class="categories">
                 <div class="category category-dance">
                     <span class="category-icon">💃</span>
                     <div class="category-name">Dance</div>
-                    <div class="category-desc">Movement & Expression</div>
                 </div>
                 <div class="category category-tantra">
                     <span class="category-icon">🕯️</span>
                     <div class="category-name">Tantra</div>
-                    <div class="category-desc">Sacred Intimacy</div>
                 </div>
                 <div class="category category-rope">
                     <span class="category-icon">🪢</span>
                     <div class="category-name">Rope</div>
-                    <div class="category-desc">Shibari & Bondage</div>
                 </div>
             </div>
         </section>
@@ -504,51 +612,8 @@
             </div>
         </section>
         
-        <section>
-            <div class="section-label">Events Included</div>
-            <div class="events-grid">
-                <div class="event">
-                    <span class="event-icon">🎵</span>
-                    <div>
-                        <div class="event-name">Ecstatic Dance</div>
-                        <div class="event-desc">RESONANZ · Dance Temple · Awakened Dreamers</div>
-                    </div>
-                </div>
-                <div class="event">
-                    <span class="event-icon">🤸</span>
-                    <div>
-                        <div class="event-name">Contact Improvisation</div>
-                        <div class="event-desc">Dissolve & Play · Contact Dojo · Jams</div>
-                    </div>
-                </div>
-                <div class="event">
-                    <span class="event-icon">🧘</span>
-                    <div>
-                        <div class="event-name">Movement Practice</div>
-                        <div class="event-desc">5Rhythms · Gaga · Somatic Work</div>
-                    </div>
-                </div>
-                <div class="event">
-                    <span class="event-icon">🕯️</span>
-                    <div>
-                        <div class="event-name">Tantra Gatherings</div>
-                        <div class="event-desc">Temples · Pujas · Sacred Circles</div>
-                    </div>
-                </div>
-                <div class="event">
-                    <span class="event-icon">🪢</span>
-                    <div>
-                        <div class="event-name">Rope Arts</div>
-                        <div class="event-desc">In.Ropes · Jams · Workshops</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
         <footer>
-            <p class="footer-text">
-                Aggregated from community spaces · Powered by <a href="https://github.com/clawdbot/clawdbot">Clawdbot</a>
-            </p>
+            Aggregated from community spaces · Updated Jan 26, 2026 · <a href="https://github.com/clawdbot/clawdbot">Clawdbot</a>
         </footer>
     </div>
     
