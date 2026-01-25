@@ -1,6 +1,6 @@
-# Ubud Dance Events
+# Embodied Events
 
-A calendar feed for contact improv, ecstatic dance, and movement events in Ubud, Bali.
+A calendar feed for dance, tantra, rope/shibari, and movement events across Bali and beyond.
 
 ## 📲 Subscribe
 
@@ -9,29 +9,24 @@ A calendar feed for contact improv, ecstatic dance, and movement events in Ubud,
 webcal://spartandingo.github.io/ubud-dance-events/ubud-dance-events.ics
 ```
 
-Or visit the website: https://spartandingo.github.io/ubud-dance-events/
+**Direct download:** [ubud-dance-events.ics](./ubud-dance-events.ics)
 
-## 🔧 How it works
+## 🏷️ Categories
 
-1. **Data sources:** WhatsApp groups, Telegram groups/forums, Instagram (@paradisoubud)
-2. **Daily updates:** A cron job fetches new messages and regenerates the calendar
-3. **Pattern detection:** Identifies recurring weekly events automatically
-4. **ICS feed:** Standard iCalendar format works with Apple Calendar, Google Calendar, Outlook, etc.
+- **💃 Dance & Movement** — Ecstatic dance, contact improv, 5Rhythms, Gaga, somatic
+- **🕯️ Tantra** — Sacred sexuality, temples, pujas, kundalini
+- **🪢 Rope / Shibari** — In.Ropes jams and workshops
 
-## 📅 What's included
+## 📍 Regions
 
-- ~20 recurring weekly events (contact jams, ecstatic dance, classes)
-- Special workshops and intensives
-- Events marked as CONFIRMED or TENTATIVE based on announcement confidence
+- **Ubud, Bali** — Paradiso, Moksa, and surrounding areas
+- **Bali (wider)** — Canggu, Seminyak, south Bali venues
+- **Northern Rivers, NSW** — Mullumbimby and surrounds
 
-## 🤖 Built with
+## 🤙 How it works
 
-- [Clawdbot](https://github.com/clawdbot/clawdbot) - AI assistant
-- Python scripts for data aggregation
-- Telethon (Telegram API)
-- wacli (WhatsApp CLI)
-- Instaloader (Instagram)
+Events are aggregated from community WhatsApp and Telegram groups using [Clawdbot](https://github.com/clawdbot/clawdbot).
 
 ---
 
-*Replace `spartandingo` with your actual GitHub username after deploying.*
+*Last updated: January 2026*

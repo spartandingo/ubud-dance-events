@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ubud Dance Events</title>
-    <meta name="description" content="Contact improv, ecstatic dance, and movement events in Ubud, Bali. Subscribe to stay updated.">
+    <title>Embodied Events</title>
+    <meta name="description" content="Dance, tantra, rope, and movement events in Bali and beyond. Subscribe to stay updated.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -17,6 +17,9 @@
             --accent: #f97316;
             --accent-hover: #fb923c;
             --success: #22c55e;
+            --dance: #a855f7;
+            --tantra: #ec4899;
+            --rope: #ef4444;
         }
         
         * {
@@ -38,7 +41,7 @@
         }
         
         .container {
-            max-width: 600px;
+            max-width: 700px;
             width: 100%;
         }
         
@@ -56,7 +59,7 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--accent), #fbbf24);
+            background: linear-gradient(135deg, var(--dance), var(--tantra), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -70,120 +73,152 @@
         .card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
+            border-radius: 12px;
+            padding: 1.5rem;
             margin-bottom: 1.5rem;
         }
         
         .card h2 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
+            font-weight: 600;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
         
-        .subscribe-btn {
+        .categories {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-tag {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .category-dance { background: rgba(168, 85, 247, 0.2); color: var(--dance); border: 1px solid var(--dance); }
+        .category-tantra { background: rgba(236, 72, 153, 0.2); color: var(--tantra); border: 1px solid var(--tantra); }
+        .category-rope { background: rgba(239, 68, 68, 0.2); color: var(--rope); border: 1px solid var(--rope); }
+        
+        .regions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .region-tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--border);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        .subscribe-url {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
             background: var(--accent);
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            justify-content: center;
         }
         
-        .subscribe-btn:hover {
+        .btn-primary:hover {
             background: var(--accent-hover);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
         
-        .alt-links {
+        .btn-secondary {
+            background: var(--border);
+            color: var(--text);
+        }
+        
+        .btn-secondary:hover {
+            background: #333;
+        }
+        
+        .btn-group {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 0.75rem;
             flex-wrap: wrap;
         }
         
-        .alt-link {
-            flex: 1;
-            min-width: 140px;
-            padding: 0.75rem 1rem;
-            background: var(--border);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--text);
-            text-align: center;
+        .instructions {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .instructions h3 {
             font-size: 0.9rem;
-            transition: all 0.2s;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-muted);
         }
         
-        .alt-link:hover {
-            background: #3a3a3a;
+        .instructions ol {
+            padding-left: 1.25rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
         
-        .events-list {
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .copied {
+            color: var(--success) !important;
+        }
+        
+        .event-list {
             list-style: none;
         }
         
-        .events-list li {
-            padding: 0.75rem 0;
+        .event-item {
+            padding: 1rem 0;
             border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
         
-        .events-list li:last-child {
+        .event-item:last-child {
             border-bottom: none;
         }
         
         .event-name {
-            font-weight: 500;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
         }
         
         .event-meta {
+            font-size: 0.9rem;
             color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-        
-        .event-meta a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-        
-        .event-meta a:hover {
-            text-decoration: underline;
-        }
-        
-        .venue-tag {
-            background: var(--border);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-        
-        .special-events {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            border-color: #2a2a4e;
-        }
-        
-        .special-tag {
-            background: var(--accent);
-            color: white;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 600;
         }
         
         footer {
@@ -198,218 +233,123 @@
             text-decoration: none;
         }
         
-        .update-time {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
+        footer a:hover {
+            text-decoration: underline;
         }
         
         @media (max-width: 480px) {
-            h1 { font-size: 2rem; }
-            .card { padding: 1.5rem; }
-            .alt-links { flex-direction: column; }
+            body {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="emoji-header">💃🕺✨</div>
-            <h1>Ubud Dance Events</h1>
-            <p class="subtitle">Contact improv, ecstatic dance & movement in Bali</p>
+            <div class="emoji-header">💃🕯️🪢</div>
+            <h1>Embodied Events</h1>
+            <p class="subtitle">Dance, tantra, rope & movement events</p>
         </header>
         
         <div class="card">
-            <h2>📅 Subscribe to Calendar</h2>
-            <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
-                Get all events in your calendar app. Auto-updates weekly.
-            </p>
-            <a href="webcal://spartandingo.github.io/ubud-dance-events/ubud-dance-events.ics" class="subscribe-btn">
-                📲 Subscribe Now
-            </a>
-            <div class="alt-links">
-                <a href="ubud-dance-events.ics" class="alt-link" download>⬇️ Download .ics</a>
-                <a href="https://calendar.google.com/calendar/r?cid=webcal://spartandingo.github.io/ubud-dance-events/ubud-dance-events.ics" class="alt-link" target="_blank">📆 Add to Google</a>
+            <h2>🏷️ Categories</h2>
+            <div class="categories">
+                <span class="category-tag category-dance">💃 Dance & Movement</span>
+                <span class="category-tag category-tantra">🕯️ Tantra</span>
+                <span class="category-tag category-rope">🪢 Rope / Shibari</span>
             </div>
-            <p class="update-time">Last updated: <span id="update-time">Loading...</span></p>
+            <div class="regions">
+                <span class="region-tag">📍 Ubud, Bali</span>
+                <span class="region-tag">📍 Bali (wider)</span>
+                <span class="region-tag">📍 Northern Rivers, NSW</span>
+            </div>
         </div>
         
         <div class="card">
-            <h2>🔥 Weekly Schedule</h2>
-            <ul class="events-list">
-                <li>
-                    <div>
-                        <span class="event-name">Ecstatic Dance</span>
-                        <div class="event-meta">Sunday 10am · <a href="https://theyogabarn.com/classes/ecstatic-dance/" target="_blank">info</a></div>
-                    </div>
-                    <span class="venue-tag">Yoga Barn</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">CI Jam</span>
-                        <div class="event-meta">Sunday 4pm</div>
-                    </div>
-                    <span class="venue-tag">Nalanda</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">Dance Temple</span>
-                        <div class="event-meta">Monday 6pm · <a href="https://megatix.co.id/events/dance-temple-35" target="_blank">tickets</a></div>
-                    </div>
-                    <span class="venue-tag">Paradiso</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">Contact Dojo Jam</span>
-                        <div class="event-meta">Mon / Wed / Fri 6pm</div>
-                    </div>
-                    <span class="venue-tag">Moksa</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">5Rhythms</span>
-                        <div class="event-meta">Tue 3pm · Fri 11am</div>
-                    </div>
-                    <span class="venue-tag">Paradiso</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">Dissolve :: Eros</span>
-                        <div class="event-meta">Tuesday 6pm</div>
-                    </div>
-                    <span class="venue-tag">Paradiso</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">Round Robin Jam</span>
-                        <div class="event-meta">Tuesday 6pm</div>
-                    </div>
-                    <span class="venue-tag">Nalanda</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">ENTROPIC</span>
-                        <div class="event-meta">Wednesday 11am</div>
-                    </div>
-                    <span class="venue-tag">Paradiso</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">Embodied Frequencies</span>
-                        <div class="event-meta">Wednesday 3pm</div>
-                    </div>
-                    <span class="venue-tag">Paradiso</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">Antidote</span>
-                        <div class="event-meta">Wednesday 6:30pm</div>
-                    </div>
-                    <span class="venue-tag">Paradiso</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">Dissolve CI Skills Lab</span>
-                        <div class="event-meta">Thursday 11am</div>
-                    </div>
-                    <span class="venue-tag">Paradiso</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">CI Focus Jam</span>
-                        <div class="event-meta">Thursday 11am</div>
-                    </div>
-                    <span class="venue-tag">Nalanda</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">Resonanz (Ecstatic)</span>
-                        <div class="event-meta">Thursday 6pm</div>
-                    </div>
-                    <span class="venue-tag">Paradiso</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">Dojo Contact Class</span>
-                        <div class="event-meta">Friday 11am</div>
-                    </div>
-                    <span class="venue-tag">Moksa</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">Ecstatic Dance</span>
-                        <div class="event-meta">Friday 7pm · <a href="https://theyogabarn.com/classes/ecstatic-dance/" target="_blank">info</a></div>
-                    </div>
-                    <span class="venue-tag">Yoga Barn</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">Kinetic CI Class</span>
-                        <div class="event-meta">Saturday 9am</div>
-                    </div>
-                    <span class="venue-tag">Paradiso</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">Dissolve & Play</span>
-                        <div class="event-meta">Saturday 11am · <a href="https://megatix.co.id/events/dissolve-play" target="_blank">tickets</a></div>
-                    </div>
-                    <span class="venue-tag">Paradiso</span>
-                </li>
-                <li>
-                    <div>
-                        <span class="event-name">Saturday Polina Jam</span>
-                        <div class="event-meta">Saturday 6:30pm</div>
-                    </div>
-                    <span class="venue-tag">AmrtaSiddhi</span>
-                </li>
-            </ul>
+            <h2>📲 Subscribe to Calendar</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                Add this URL to your calendar app to get automatic updates:
+            </p>
+            <div class="subscribe-url" id="subscribeUrl">
+                webcal://spartandingo.github.io/ubud-dance-events/ubud-dance-events.ics
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="copyUrl()">
+                    <span id="copyText">📋 Copy URL</span>
+                </button>
+                <a class="btn btn-secondary" href="ubud-dance-events.ics" download>
+                    ⬇️ Download .ics
+                </a>
+            </div>
+            
+            <div class="instructions">
+                <h3>How to subscribe</h3>
+                <ol>
+                    <li><strong>iPhone/iPad:</strong> Copy URL → Settings → Calendar → Accounts → Add → Subscribed Calendar → Paste URL</li>
+                    <li><strong>Google Calendar:</strong> Settings → Add calendar → From URL → Paste URL</li>
+                    <li><strong>Mac Calendar:</strong> File → New Calendar Subscription → Paste URL</li>
+                </ol>
+            </div>
         </div>
         
-        <div class="card special-events">
-            <h2>⭐ Upcoming Intensives</h2>
-            <ul class="events-list">
-                <li>
-                    <div>
-                        <span class="event-name">Gaga + Movement Lab</span>
-                        <div class="event-meta">Feb 6 • 4 hours • <a href="https://megatix.com.au/events/gaga-movement-lab" target="_blank">tickets</a></div>
-                    </div>
-                    <span class="special-tag">PRESALE</span>
+        <div class="card">
+            <h2>🗓️ What's Included</h2>
+            <ul class="event-list">
+                <li class="event-item">
+                    <div class="event-name">Ecstatic Dance</div>
+                    <div class="event-meta">RESONANZ, Dance Temple, and more</div>
                 </li>
-                <li>
-                    <div>
-                        <span class="event-name">Sequence of Layers (Valentyn)</span>
-                        <div class="event-meta">Feb 7-8 • 2 days • <a href="https://forms.gle/qUqgCf4jQmef1SXP9" target="_blank">register</a></div>
-                    </div>
-                    <span class="special-tag">WORKSHOP</span>
+                <li class="event-item">
+                    <div class="event-name">Contact Improvisation</div>
+                    <div class="event-meta">Dissolve & Play, Contact Dojo, CI jams</div>
                 </li>
-                <li>
-                    <div>
-                        <span class="event-name">From the Ground Up (Alicia)</span>
-                        <div class="event-meta">Feb 28 – Mar 7 • 8 days • <a href="https://forms.gle/GLVJzvne5XFqm4Po9" target="_blank">register</a></div>
-                    </div>
-                    <span class="special-tag">INTENSIVE</span>
+                <li class="event-item">
+                    <div class="event-name">Movement Classes</div>
+                    <div class="event-meta">5Rhythms, Gaga, somatic workshops</div>
+                </li>
+                <li class="event-item">
+                    <div class="event-name">Tantra Events</div>
+                    <div class="event-meta">Temples, pujas, sacred gatherings</div>
+                </li>
+                <li class="event-item">
+                    <div class="event-name">Rope / Shibari</div>
+                    <div class="event-meta">In.Ropes jams and workshops</div>
                 </li>
             </ul>
         </div>
         
         <footer>
-            <p>Data sourced from WhatsApp, Telegram & Instagram</p>
-            <p style="margin-top: 0.5rem;">
-                Built with 🤖 by <a href="https://github.com/clawdbot/clawdbot">Clawdbot</a>
-            </p>
+            <p>Events aggregated from community groups in Bali & NSW</p>
+            <p style="margin-top: 0.5rem;">🤙 Powered by <a href="https://github.com/clawdbot/clawdbot">Clawdbot</a></p>
         </footer>
     </div>
     
     <script>
-        // Update the timestamp from the ICS file's last modified
-        document.getElementById('update-time').textContent = new Date().toLocaleDateString('en-US', {
-            weekday: 'short',
-            month: 'short', 
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
+        function copyUrl() {
+            const url = document.getElementById('subscribeUrl').textContent.trim();
+            navigator.clipboard.writeText(url).then(() => {
+                const btn = document.getElementById('copyText');
+                btn.textContent = '✓ Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = '📋 Copy URL';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
     </script>
 </body>
 </html>
