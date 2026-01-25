@@ -18,14 +18,12 @@
             --smoke: #8a8a9a;
             --bone: #e8e4dc;
             --cream: #f5f2ea;
-            
             --ember: #ff6b35;
             --ember-glow: rgba(255, 107, 53, 0.4);
             --violet: #9d4edd;
             --violet-glow: rgba(157, 78, 221, 0.3);
             --rose: #e84a5f;
             --rose-glow: rgba(232, 74, 95, 0.3);
-            
             --serif: 'Cormorant Garamond', Georgia, serif;
             --mono: 'Space Mono', monospace;
         }
@@ -51,10 +49,8 @@
         .atmosphere::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
             background: 
                 radial-gradient(ellipse 80% 50% at 20% 20%, var(--violet-glow), transparent 50%),
                 radial-gradient(ellipse 60% 40% at 80% 70%, var(--ember-glow), transparent 50%),
@@ -81,17 +77,17 @@
             z-index: 1;
             max-width: 800px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 3rem 1.5rem;
         }
         
         header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
         
         .sigil {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 3rem;
+            margin-bottom: 1rem;
             display: flex;
             justify-content: center;
             gap: 0.5rem;
@@ -118,26 +114,59 @@
             letter-spacing: 0.08em;
             text-transform: uppercase;
             line-height: 1;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
         
         .tagline {
             font-family: var(--mono);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--smoke);
         }
         
-        section { margin-bottom: 4rem; }
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 1px;
+            background: var(--edge);
+            margin-bottom: 2rem;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 0.875rem 1rem;
+            background: var(--deep);
+            border: none;
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--smoke);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab:hover {
+            color: var(--cream);
+            background: var(--surface);
+        }
+        
+        .tab.active {
+            color: var(--cream);
+            background: var(--surface);
+            box-shadow: inset 0 -2px 0 var(--ember);
+        }
+        
+        section { margin-bottom: 3rem; }
         
         .section-label {
             font-family: var(--mono);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             letter-spacing: 0.4em;
             text-transform: uppercase;
             color: var(--whisper);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -150,47 +179,38 @@
             background: linear-gradient(90deg, var(--edge), transparent);
         }
         
-        /* Day headers */
         .day-header {
             font-family: var(--serif);
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 500;
-            margin: 2.5rem 0 1rem;
+            margin: 2rem 0 0.75rem;
             padding-bottom: 0.5rem;
             border-bottom: 1px solid var(--edge);
-            display: flex;
-            align-items: baseline;
-            gap: 1rem;
         }
         
-        .day-header:first-of-type {
-            margin-top: 0;
-        }
+        .day-header:first-of-type { margin-top: 0; }
         
         .day-date {
             font-family: var(--mono);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: var(--smoke);
-            letter-spacing: 0.1em;
+            margin-left: 0.5rem;
         }
         
-        .today {
-            color: var(--ember);
-        }
+        .today { color: var(--ember); }
         
         .today::after {
             content: 'TODAY';
             font-family: var(--mono);
-            font-size: 0.55rem;
+            font-size: 0.5rem;
             letter-spacing: 0.2em;
             background: var(--ember);
             color: var(--void);
-            padding: 0.2rem 0.5rem;
+            padding: 0.15rem 0.4rem;
             margin-left: 0.75rem;
             vertical-align: middle;
         }
         
-        /* Event cards */
         .events-list {
             display: flex;
             flex-direction: column;
@@ -200,41 +220,47 @@
         
         .event-card {
             background: var(--deep);
-            padding: 1.25rem 1.5rem;
-            display: grid;
-            grid-template-columns: 4rem 1fr auto;
-            gap: 1rem;
-            align-items: center;
             transition: background 0.3s ease;
         }
         
-        .event-card:hover {
+        .event-card[open] {
+            background: var(--surface);
+        }
+        
+        .event-summary {
+            padding: 1rem 1.25rem;
+            display: grid;
+            grid-template-columns: 4.5rem 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            cursor: pointer;
+            list-style: none;
+        }
+        
+        .event-summary::-webkit-details-marker { display: none; }
+        
+        .event-summary:hover {
             background: var(--surface);
         }
         
         .event-time {
             font-family: var(--mono);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--smoke);
         }
         
-        .event-info {
-            min-width: 0;
-        }
+        .event-info { min-width: 0; }
         
         .event-name {
             font-family: var(--serif);
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 500;
-            margin-bottom: 0.25rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            margin-bottom: 0.2rem;
         }
         
         .event-meta {
             font-family: var(--mono);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: var(--smoke);
             display: flex;
             gap: 1rem;
@@ -243,64 +269,51 @@
         
         .event-venue {
             color: var(--bone);
+            text-decoration: none;
+        }
+        
+        .event-venue:hover {
+            color: var(--ember);
+        }
+        
+        .event-tickets {
+            color: var(--ember);
+            text-decoration: none;
+        }
+        
+        .event-tickets:hover {
+            text-decoration: underline;
         }
         
         .event-price {
             font-family: var(--mono);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--whisper);
-            white-space: nowrap;
         }
         
-        /* Categories */
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: var(--edge);
-            border: 1px solid var(--edge);
-        }
-        
-        .category {
-            background: var(--deep);
-            padding: 1.5rem 1rem;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .category:hover { background: var(--surface); }
-        
-        .category-icon { font-size: 1.75rem; margin-bottom: 0.75rem; display: block; }
-        .category-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; }
-        .category-dance:hover { box-shadow: inset 0 -3px 0 var(--violet); }
-        .category-tantra:hover { box-shadow: inset 0 -3px 0 var(--rose); }
-        .category-rope:hover { box-shadow: inset 0 -3px 0 var(--ember); }
-        
-        /* Regions */
-        .regions {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .region {
+        .event-details {
+            padding: 0 1.25rem 1rem 5.75rem;
             font-family: var(--mono);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--smoke);
-            letter-spacing: 0.15em;
+            line-height: 1.6;
         }
         
-        .region::before {
-            content: '◈ ';
+        .event-desc {
+            margin-bottom: 0.5rem;
+            color: var(--bone);
+        }
+        
+        .event-sources {
             color: var(--whisper);
+            font-size: 0.55rem;
         }
         
         /* Subscribe */
         .subscribe-card {
             background: var(--deep);
             border: 1px solid var(--edge);
-            padding: 2.5rem;
+            padding: 2rem;
             position: relative;
         }
         
@@ -314,50 +327,45 @@
         
         .subscribe-title {
             font-family: var(--serif);
-            font-size: 1.5rem;
-            font-weight: 400;
+            font-size: 1.35rem;
             margin-bottom: 0.5rem;
         }
         
         .subscribe-desc {
             font-family: var(--mono);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--smoke);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
         
         .url-display {
             background: var(--void);
             border: 1px solid var(--edge);
-            padding: 1rem;
+            padding: 0.875rem;
             font-family: var(--mono);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--ember);
             word-break: break-all;
             cursor: pointer;
-            transition: border-color 0.3s ease;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
         
         .url-display:hover { border-color: var(--ember); }
         
-        .actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
         
         .btn {
             font-family: var(--mono);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            padding: 0.875rem 1.5rem;
+            padding: 0.75rem 1.25rem;
             border: 1px solid var(--edge);
             background: transparent;
             color: var(--cream);
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
         }
         
         .btn:hover {
@@ -376,43 +384,30 @@
         
         footer {
             text-align: center;
-            padding-top: 3rem;
+            padding-top: 2rem;
             border-top: 1px solid var(--edge);
             font-family: var(--mono);
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: var(--whisper);
-            letter-spacing: 0.1em;
         }
         
-        footer a {
-            color: var(--smoke);
-            text-decoration: none;
-        }
+        footer a { color: var(--smoke); text-decoration: none; }
         footer a:hover { color: var(--ember); }
         
+        .hidden { display: none !important; }
+        
         @media (max-width: 640px) {
-            .container { padding: 2.5rem 1.25rem; }
-            .categories { grid-template-columns: 1fr; }
-            .event-card { grid-template-columns: 1fr; gap: 0.5rem; }
+            .container { padding: 2rem 1rem; }
+            .tabs { flex-wrap: wrap; }
+            .tab { flex: 1 1 45%; }
+            .event-summary { grid-template-columns: 1fr; gap: 0.5rem; }
             .event-time { order: 1; }
             .event-info { order: 0; }
             .event-price { order: 2; }
-            .subscribe-card { padding: 1.75rem; }
+            .event-details { padding-left: 1.25rem; }
+            .subscribe-card { padding: 1.5rem; }
             .actions { flex-direction: column; }
-            .regions { flex-direction: column; align-items: center; gap: 0.75rem; }
         }
-        
-        @keyframes reveal {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        header, section { animation: reveal 0.8s ease forwards; }
-        section:nth-of-type(1) { animation-delay: 0.1s; }
-        section:nth-of-type(2) { animation-delay: 0.2s; }
-        section:nth-of-type(3) { animation-delay: 0.3s; }
-        section:nth-of-type(4) { animation-delay: 0.4s; }
-        section:nth-of-type(5) { animation-delay: 0.5s; }
     </style>
 </head>
 <body>
@@ -430,167 +425,344 @@
             <p class="tagline">Movement · Ritual · Connection</p>
         </header>
         
-        <section>
-            <div class="section-label">This Week · Bali</div>
-            
-            <h3 class="day-header today">Monday <span class="day-date">Jan 26</span></h3>
-            <div class="events-list">
-                <div class="event-card">
-                    <span class="event-time">6pm</span>
-                    <div class="event-info">
-                        <div class="event-name">Dance Temple</div>
-                        <div class="event-meta"><span class="event-venue">Paradiso</span></div>
-                    </div>
-                    <span class="event-price">200k</span>
-                </div>
-                <div class="event-card">
-                    <span class="event-time">6pm</span>
-                    <div class="event-info">
-                        <div class="event-name">Contact Dojo Jam</div>
-                        <div class="event-meta"><span class="event-venue">Moksa Ubud</span> · Silent jam</div>
-                    </div>
-                    <span class="event-price">150k</span>
-                </div>
-            </div>
-            
-            <h3 class="day-header">Tuesday <span class="day-date">Jan 27</span></h3>
-            <div class="events-list">
-                <div class="event-card">
-                    <span class="event-time">3pm</span>
-                    <div class="event-info">
-                        <div class="event-name">5Rhythms</div>
-                        <div class="event-meta"><span class="event-venue">Paradiso</span></div>
-                    </div>
-                    <span class="event-price">180k</span>
-                </div>
-                <div class="event-card">
-                    <span class="event-time">6pm</span>
-                    <div class="event-info">
-                        <div class="event-name">Dissolve :: Eros</div>
-                        <div class="event-meta"><span class="event-venue">Paradiso</span> · Contact improv</div>
-                    </div>
-                    <span class="event-price">180k</span>
-                </div>
-                <div class="event-card">
-                    <span class="event-time">6pm</span>
-                    <div class="event-info">
-                        <div class="event-name">Round Robin Jam</div>
-                        <div class="event-meta"><span class="event-venue">Nalanda</span> · Structured CI</div>
-                    </div>
-                    <span class="event-price">150k</span>
-                </div>
-            </div>
-            
-            <h3 class="day-header">Wednesday <span class="day-date">Jan 28</span></h3>
-            <div class="events-list">
-                <div class="event-card">
-                    <span class="event-time">11am</span>
-                    <div class="event-info">
-                        <div class="event-name">ENTROPIC</div>
-                        <div class="event-meta"><span class="event-venue">Paradiso</span> · Contact improv jam</div>
-                    </div>
-                    <span class="event-price">150k</span>
-                </div>
-                <div class="event-card">
-                    <span class="event-time">3pm</span>
-                    <div class="event-info">
-                        <div class="event-name">Embodied Frequencies</div>
-                        <div class="event-meta"><span class="event-venue">Paradiso</span> · CI + sounding</div>
-                    </div>
-                    <span class="event-price">200k</span>
-                </div>
-                <div class="event-card">
-                    <span class="event-time">6:30pm</span>
-                    <div class="event-info">
-                        <div class="event-name">Antidote</div>
-                        <div class="event-meta"><span class="event-venue">Paradiso</span></div>
-                    </div>
-                    <span class="event-price">300k</span>
-                </div>
-            </div>
-            
-            <h3 class="day-header">Thursday <span class="day-date">Jan 29</span></h3>
-            <div class="events-list">
-                <div class="event-card">
-                    <span class="event-time">11am</span>
-                    <div class="event-info">
-                        <div class="event-name">Dissolve CI Skills Lab</div>
-                        <div class="event-meta"><span class="event-venue">Paradiso</span> · All levels</div>
-                    </div>
-                    <span class="event-price">200k</span>
-                </div>
-                <div class="event-card">
-                    <span class="event-time">11am</span>
-                    <div class="event-info">
-                        <div class="event-name">CI Focus Jam</div>
-                        <div class="event-meta"><span class="event-venue">Nalanda</span> · Contemplative</div>
-                    </div>
-                    <span class="event-price">—</span>
-                </div>
-                <div class="event-card">
-                    <span class="event-time">6pm</span>
-                    <div class="event-info">
-                        <div class="event-name">Resonanz</div>
-                        <div class="event-meta"><span class="event-venue">Paradiso</span> · Ecstatic dance</div>
-                    </div>
-                    <span class="event-price">200k</span>
-                </div>
-            </div>
-            
-            <h3 class="day-header">Saturday <span class="day-date">Jan 31</span></h3>
-            <div class="events-list">
-                <div class="event-card">
-                    <span class="event-time">9am</span>
-                    <div class="event-info">
-                        <div class="event-name">Kinetic CI Class</div>
-                        <div class="event-meta"><span class="event-venue">Paradiso</span></div>
-                    </div>
-                    <span class="event-price">180k</span>
-                </div>
-                <div class="event-card">
-                    <span class="event-time">11am</span>
-                    <div class="event-info">
-                        <div class="event-name">Dissolve & Play</div>
-                        <div class="event-meta"><span class="event-venue">Paradiso</span> · Acro meets somatic</div>
-                    </div>
-                    <span class="event-price">180k</span>
-                </div>
-                <div class="event-card">
-                    <span class="event-time">6:30pm</span>
-                    <div class="event-info">
-                        <div class="event-name">Saturday Polina CI Jam</div>
-                        <div class="event-meta"><span class="event-venue">AmrtaSiddhi</span></div>
-                    </div>
-                    <span class="event-price">—</span>
-                </div>
-            </div>
-        </section>
+        <div class="tabs">
+            <button class="tab active" data-filter="all">All</button>
+            <button class="tab" data-filter="ubud">Ubud</button>
+            <button class="tab" data-filter="bali">Bali</button>
+            <button class="tab" data-filter="northern-rivers">NSW</button>
+        </div>
         
-        <section>
-            <div class="section-label">Practices</div>
-            <div class="categories">
-                <div class="category category-dance">
-                    <span class="category-icon">💃</span>
-                    <div class="category-name">Dance</div>
-                </div>
-                <div class="category category-tantra">
-                    <span class="category-icon">🕯️</span>
-                    <div class="category-name">Tantra</div>
-                </div>
-                <div class="category category-rope">
-                    <span class="category-icon">🪢</span>
-                    <div class="category-name">Rope</div>
-                </div>
+        <section id="events">
+            <div class="section-label">This Week</div>
+            
+            <h3 class="day-header today" data-region="bali">Monday <span class="day-date">January 26</span></h3>
+            <div class="events-list" data-region="bali">
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">6pm–9pm</span>
+                        <div class="event-info">
+                            <div class="event-name">Dance Temple</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/KqJH7UVY6Y6xZvGq8" target="_blank" class="event-venue">Paradiso ↗</a></div>
+                        </div>
+                        <span class="event-price">200k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Weekly with rotating DJs</div>
+                        <div class="event-sources">via paradiso_instagram, whatsapp</div>
+                    </div>
+                </details>
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">6pm–8pm</span>
+                        <div class="event-info">
+                            <div class="event-name">Contact Dojo Jam</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/nKXxXCFpG3Wd3kFW7" target="_blank" class="event-venue">Moksa Ubud ↗</a></div>
+                        </div>
+                        <span class="event-price">150k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Silent jam with tea ceremony. Cash only.</div>
+                        <div class="event-sources">via CONTACT DOjO</div>
+                    </div>
+                </details>
             </div>
-        </section>
-        
-        <section>
-            <div class="section-label">Locations</div>
-            <div class="regions">
-                <span class="region">Ubud, Bali</span>
-                <span class="region">Greater Bali</span>
-                <span class="region">Northern Rivers, NSW</span>
+
+            <h3 class="day-header" data-region="bali">Tuesday <span class="day-date">January 27</span></h3>
+            <div class="events-list" data-region="bali">
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">3pm–5pm</span>
+                        <div class="event-info">
+                            <div class="event-name">5Rhythms</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/KqJH7UVY6Y6xZvGq8" target="_blank" class="event-venue">Paradiso ↗</a></div>
+                        </div>
+                        <span class="event-price">180k</span>
+                    </summary>
+                    <div class="event-details">
+                        
+                        <div class="event-sources">via paradiso_instagram</div>
+                    </div>
+                </details>
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">6pm–8pm</span>
+                        <div class="event-info">
+                            <div class="event-name">Dissolve :: Eros</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/KqJH7UVY6Y6xZvGq8" target="_blank" class="event-venue">Paradiso ↗</a></div>
+                        </div>
+                        <span class="event-price">180k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Contact improv</div>
+                        <div class="event-sources">via paradiso_instagram</div>
+                    </div>
+                </details>
+
+                <details class="event-card" data-status="tentative" data-region="bali">
+                    <summary class="event-summary">
+                        <span class="event-time">6pm–8pm</span>
+                        <div class="event-info">
+                            <div class="event-name">Round Robin Jam</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/xvYEJmMUn7e6YuLG6" target="_blank" class="event-venue">Nalanda ↗</a></div>
+                        </div>
+                        <span class="event-price">150k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Structured CI jam with observation circle</div>
+                        <div class="event-sources">via CI Community Bali</div>
+                    </div>
+                </details>
             </div>
+
+            <h3 class="day-header" data-region="bali">Wednesday <span class="day-date">January 28</span></h3>
+            <div class="events-list" data-region="bali">
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">11am–1:15pm</span>
+                        <div class="event-info">
+                            <div class="event-name">ENTROPIC</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/KqJH7UVY6Y6xZvGq8" target="_blank" class="event-venue">Paradiso ↗</a></div>
+                        </div>
+                        <span class="event-price">150k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Contact Dance & Sound Odyssey</div>
+                        <div class="event-sources">via paradiso_instagram, CI Monday, Wednesdays & Thursdays</div>
+                    </div>
+                </details>
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">3pm–5pm</span>
+                        <div class="event-info">
+                            <div class="event-name">Embodied Frequencies</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/KqJH7UVY6Y6xZvGq8" target="_blank" class="event-venue">Paradiso ↗</a></div>
+                        </div>
+                        <span class="event-price">200k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">CI + Sounding</div>
+                        <div class="event-sources">via paradiso_instagram</div>
+                    </div>
+                </details>
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">6pm–8pm</span>
+                        <div class="event-info">
+                            <div class="event-name">Contact Dojo Jam</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/nKXxXCFpG3Wd3kFW7" target="_blank" class="event-venue">Moksa Ubud ↗</a></div>
+                        </div>
+                        <span class="event-price">150k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Silent jam. Cash only.</div>
+                        <div class="event-sources">via CONTACT DOjO</div>
+                    </div>
+                </details>
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">6:30pm–9:30pm</span>
+                        <div class="event-info">
+                            <div class="event-name">Antidote</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/KqJH7UVY6Y6xZvGq8" target="_blank" class="event-venue">Paradiso ↗</a></div>
+                        </div>
+                        <span class="event-price">300k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Rewiring the Remedy of Movement</div>
+                        <div class="event-sources">via paradiso_instagram</div>
+                    </div>
+                </details>
+            </div>
+
+            <h3 class="day-header" data-region="bali">Thursday <span class="day-date">January 29</span></h3>
+            <div class="events-list" data-region="bali">
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">11am–1pm</span>
+                        <div class="event-info">
+                            <div class="event-name">Dissolve CI Skills Lab</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/KqJH7UVY6Y6xZvGq8" target="_blank" class="event-venue">Paradiso ↗</a></div>
+                        </div>
+                        <span class="event-price">200k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">All levels, guided throughout</div>
+                        <div class="event-sources">via paradiso_instagram, CI Monday, Wednesdays & Thursdays</div>
+                    </div>
+                </details>
+
+                <details class="event-card" data-status="tentative" data-region="bali">
+                    <summary class="event-summary">
+                        <span class="event-time">11am–2pm</span>
+                        <div class="event-info">
+                            <div class="event-name">CI Focus Jam</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/xvYEJmMUn7e6YuLG6" target="_blank" class="event-venue">Nalanda ↗</a></div>
+                        </div>
+                        <span class="event-price">—</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Contemplative practice with meditation</div>
+                        <div class="event-sources">via CI Community Bali</div>
+                    </div>
+                </details>
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">6pm–8:45pm</span>
+                        <div class="event-info">
+                            <div class="event-name">Resonanz</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/KqJH7UVY6Y6xZvGq8" target="_blank" class="event-venue">Paradiso ↗</a></div>
+                        </div>
+                        <span class="event-price">200k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Ecstatic Dance</div>
+                        <div class="event-sources">via paradiso_instagram, whatsapp</div>
+                    </div>
+                </details>
+            </div>
+
+            <h3 class="day-header" data-region="bali">Friday <span class="day-date">January 30</span></h3>
+            <div class="events-list" data-region="bali">
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">11am–1pm</span>
+                        <div class="event-info">
+                            <div class="event-name">5Rhythms</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/KqJH7UVY6Y6xZvGq8" target="_blank" class="event-venue">Paradiso ↗</a></div>
+                        </div>
+                        <span class="event-price">180k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">With Sophie</div>
+                        <div class="event-sources">via paradiso_instagram</div>
+                    </div>
+                </details>
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">11am–1pm</span>
+                        <div class="event-info">
+                            <div class="event-name">Dojo Contact Class</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/nKXxXCFpG3Wd3kFW7" target="_blank" class="event-venue">Moksa Ubud ↗</a></div>
+                        </div>
+                        <span class="event-price">200k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">All levels. Cash only.</div>
+                        <div class="event-sources">via CONTACT DOjO</div>
+                    </div>
+                </details>
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">6pm–8pm</span>
+                        <div class="event-info">
+                            <div class="event-name">Contact Dojo Jam</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/nKXxXCFpG3Wd3kFW7" target="_blank" class="event-venue">Moksa Ubud ↗</a></div>
+                        </div>
+                        <span class="event-price">150k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Silent jam. Cash only.</div>
+                        <div class="event-sources">via CONTACT DOjO</div>
+                    </div>
+                </details>
+            </div>
+
+            <h3 class="day-header" data-region="bali">Saturday <span class="day-date">January 31</span></h3>
+            <div class="events-list" data-region="bali">
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">9am–10:30am</span>
+                        <div class="event-info">
+                            <div class="event-name">Kinetic CI Class</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/KqJH7UVY6Y6xZvGq8" target="_blank" class="event-venue">Paradiso ↗</a></div>
+                        </div>
+                        <span class="event-price">180k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Practical Skills for Contact Dance</div>
+                        <div class="event-sources">via paradiso_instagram, whatsapp</div>
+                    </div>
+                </details>
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">11am–1pm</span>
+                        <div class="event-info">
+                            <div class="event-name">Dissolve & Play</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/KqJH7UVY6Y6xZvGq8" target="_blank" class="event-venue">Paradiso ↗</a></div>
+                        </div>
+                        <span class="event-price">180k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Acrobatics meets somatic movement</div>
+                        <div class="event-sources">via paradiso_instagram, whatsapp</div>
+                    </div>
+                </details>
+
+                <details class="event-card" data-status="likely" data-region="ubud">
+                    <summary class="event-summary">
+                        <span class="event-time">6:30pm–8:30pm</span>
+                        <div class="event-info">
+                            <div class="event-name">Saturday Polina CI Jam</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/amRtaSiddhi" target="_blank" class="event-venue">AmrtaSiddhi ↗</a></div>
+                        </div>
+                        <span class="event-price">—</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Warm-up, jam, bodywork to close</div>
+                        <div class="event-sources">via Saturday Polina CI Jam</div>
+                    </div>
+                </details>
+            </div>
+
+            <h3 class="day-header" data-region="bali">Sunday <span class="day-date">February 01</span></h3>
+            <div class="events-list" data-region="bali">
+
+                <details class="event-card" data-status="likely" data-region="bali">
+                    <summary class="event-summary">
+                        <span class="event-time">4pm</span>
+                        <div class="event-info">
+                            <div class="event-name">CI Jam</div>
+                            <div class="event-meta"><a href="https://maps.app.goo.gl/xvYEJmMUn7e6YuLG6" target="_blank" class="event-venue">Nalanda ↗</a></div>
+                        </div>
+                        <span class="event-price">150k</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Regular Sunday jam</div>
+                        <div class="event-sources">via CI Community Bali</div>
+                    </div>
+                </details>
+
+                <details class="event-card" data-status="tentative" data-region="bali">
+                    <summary class="event-summary">
+                        <span class="event-time">TBA</span>
+                        <div class="event-info">
+                            <div class="event-name">Liquid Contact</div>
+                            <div class="event-meta"><span class="event-venue">Various (pool/water)</span></div>
+                        </div>
+                        <span class="event-price">—</span>
+                    </summary>
+                    <div class="event-details">
+                        <div class="event-desc">Water-based CI jams, schedule varies</div>
+                        <div class="event-sources">via Liquid Contact</div>
+                    </div>
+                </details>
+            </div>
+
         </section>
         
         <section>
@@ -602,30 +774,58 @@
                     webcal://spartandingo.github.io/ubud-dance-events/ubud-dance-events.ics
                 </div>
                 <div class="actions">
-                    <button class="btn btn-primary" id="copyBtn" onclick="copyUrl()">
-                        <span>◎</span> Copy URL
-                    </button>
-                    <a class="btn" href="ubud-dance-events.ics" download>
-                        <span>↓</span> Download
-                    </a>
+                    <button class="btn btn-primary" id="copyBtn" onclick="copyUrl()">◎ Copy URL</button>
+                    <a class="btn" href="ubud-dance-events.ics" download>↓ Download</a>
                 </div>
             </div>
         </section>
         
         <footer>
-            Aggregated from community spaces · Updated Jan 26, 2026 · <a href="https://github.com/clawdbot/clawdbot">Clawdbot</a>
+            Updated 2026-01-25 22:45 WITA · <a href="https://github.com/clawdbot/clawdbot">Clawdbot</a>
         </footer>
     </div>
     
     <script>
+        // Tab filtering
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const filter = tab.dataset.filter;
+                document.querySelectorAll('.day-header, .events-list').forEach(el => {
+                    if (filter === 'all') {
+                        el.classList.remove('hidden');
+                    } else {
+                        // Show if any child matches the filter
+                        const hasMatch = el.querySelector(`[data-region="${filter}"]`) || 
+                                        el.dataset.region === filter ||
+                                        (filter === 'bali' && (el.dataset.region === 'bali' || el.dataset.region === 'ubud'));
+                        el.classList.toggle('hidden', !hasMatch);
+                    }
+                });
+                
+                document.querySelectorAll('.event-card').forEach(card => {
+                    if (filter === 'all') {
+                        card.classList.remove('hidden');
+                    } else if (filter === 'bali') {
+                        card.classList.toggle('hidden', 
+                            card.dataset.region !== 'bali' && card.dataset.region !== 'ubud');
+                    } else {
+                        card.classList.toggle('hidden', card.dataset.region !== filter);
+                    }
+                });
+            });
+        });
+        
         function copyUrl() {
             const url = document.getElementById('url').textContent.trim();
             navigator.clipboard.writeText(url).then(() => {
                 const btn = document.getElementById('copyBtn');
-                btn.innerHTML = '<span>✓</span> Copied';
+                btn.textContent = '✓ Copied';
                 btn.classList.add('copied');
                 setTimeout(() => {
-                    btn.innerHTML = '<span>◎</span> Copy URL';
+                    btn.textContent = '◎ Copy URL';
                     btn.classList.remove('copied');
                 }, 2000);
             });
