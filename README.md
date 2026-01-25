@@ -6,10 +6,10 @@ A calendar feed for contact improv, ecstatic dance, and movement events in Ubud,
 
 **Subscribe URL (for calendar apps):**
 ```
-webcal://YOUR_USERNAME.github.io/ubud-dance-events/ubud-dance-events.ics
+webcal://spartandingo.github.io/ubud-dance-events/ubud-dance-events.ics
 ```
 
-Or visit the website: https://YOUR_USERNAME.github.io/ubud-dance-events/
+Or visit the website: https://spartandingo.github.io/ubud-dance-events/
 
 ## 🔧 How it works
 
@@ -34,4 +34,4 @@ Or visit the website: https://YOUR_USERNAME.github.io/ubud-dance-events/
 
 ---
 
-*Replace `YOUR_USERNAME` with your actual GitHub username after deploying.*
+*Replace `spartandingo` with your actual GitHub username after deploying.*
