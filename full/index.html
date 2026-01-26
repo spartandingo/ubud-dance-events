@@ -840,26 +840,30 @@
                 tab.classList.add('active');
                 
                 const filter = tab.dataset.filter;
-                document.querySelectorAll('.day-header, .events-list').forEach(el => {
-                    if (filter === 'all') {
-                        el.classList.remove('hidden');
-                    } else {
-                        // Show if any child matches the filter
-                        const hasMatch = el.querySelector(`[data-region="${filter}"]`) || 
-                                        el.dataset.region === filter ||
-                                        (filter === 'bali' && (el.dataset.region === 'bali' || el.dataset.region === 'ubud'));
-                        el.classList.toggle('hidden', !hasMatch);
-                    }
-                });
                 
+                // First, filter individual event cards
                 document.querySelectorAll('.event-card').forEach(card => {
                     if (filter === 'all') {
                         card.classList.remove('hidden');
                     } else if (filter === 'bali') {
+                        // Bali tab shows both bali and ubud
                         card.classList.toggle('hidden', 
                             card.dataset.region !== 'bali' && card.dataset.region !== 'ubud');
                     } else {
                         card.classList.toggle('hidden', card.dataset.region !== filter);
+                    }
+                });
+                
+                // Then, show/hide day headers and event lists based on whether they have visible events
+                document.querySelectorAll('.events-list').forEach(list => {
+                    const hasVisibleEvents = list.querySelector('.event-card:not(.hidden)');
+                    list.classList.toggle('hidden', !hasVisibleEvents);
+                });
+                
+                document.querySelectorAll('.day-header').forEach(header => {
+                    const nextList = header.nextElementSibling;
+                    if (nextList && nextList.classList.contains('events-list')) {
+                        header.classList.toggle('hidden', nextList.classList.contains('hidden'));
                     }
                 });
             });
