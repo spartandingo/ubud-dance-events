@@ -1,0 +1,13 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Environment
+.env
+
+# Cache
+.instagram_cache/
+
+# Session files
+.telegram_session.session

@@ -1,0 +1,161 @@
+{
+  "regions": {
+    "ubud": {
+      "name": "Ubud, Bali",
+      "timezone": "Asia/Makassar"
+    },
+    "bali": {
+      "name": "Bali (wider)",
+      "timezone": "Asia/Makassar"
+    },
+    "northern-rivers": {
+      "name": "Northern Rivers, NSW",
+      "timezone": "Australia/Sydney"
+    }
+  },
+  "categories": {
+    "dance": {
+      "name": "Dance & Movement",
+      "search_terms": ["dance", "ecstatic", "improv", "movement", "5rhythms", "gaga", "somatic", "contact", "jam", "RESONANZ"]
+    },
+    "tantra": {
+      "name": "Tantra",
+      "search_terms": ["tantra", "tantric", "sacred sexuality", "temple", "puja", "shakti", "kundalini"]
+    },
+    "rope": {
+      "name": "Rope / Shibari",
+      "search_terms": ["rope", "shibari", "kinbaku", "bondage", "tying", "In.Ropes"]
+    }
+  },
+  "visibility_defaults": {
+    "dance": "public",
+    "tantra": "private",
+    "rope": "private"
+  },
+  "websites": {
+    "enabled": true,
+    "sites": {
+      "yoga-barn": {
+        "name": "The Yoga Barn",
+        "url": "https://theyogabarn.com/classes/ecstatic-dance/",
+        "parser": "yoga_barn",
+        "region": "ubud",
+        "categories": ["dance"],
+        "visibility": "public"
+      }
+    }
+  },
+  "instagram": {
+    "enabled": true,
+    "profiles": {
+      "paradisoubud": {
+        "name": "Paradiso Ubud",
+        "region": "ubud",
+        "categories": ["dance"],
+        "schedule_detector": "maroon_template",
+        "visibility": "public"
+      }
+    }
+  },
+  "whatsapp": {
+    "enabled": true,
+    "groups": {
+      "17609142454-1609066274@g.us": {
+        "name": "Ubud Community",
+        "region": "ubud",
+        "categories": ["dance", "tantra"],
+        "visibility": "private"
+      },
+      "6281338201923-1627265153@g.us": {
+        "name": "Bali Dance Community FULL",
+        "region": "bali",
+        "categories": ["dance"],
+        "visibility": "public"
+      },
+      "120363324641442334@g.us": {
+        "name": "Bali Contact Improvisation Community",
+        "region": "bali",
+        "categories": ["dance"],
+        "visibility": "public"
+      },
+      "5521999646969-1632787852@g.us": {
+        "name": "Awakened Dreamers Festival",
+        "region": "bali",
+        "categories": ["dance", "tantra"],
+        "visibility": "private"
+      },
+      "120363421563459724@g.us": {
+        "name": "Contact Improv Mullumbimby",
+        "region": "northern-rivers",
+        "categories": ["dance"],
+        "visibility": "public"
+      },
+      "120363404085862919@g.us": {
+        "name": "In.Ropes Bali",
+        "region": "bali",
+        "categories": ["rope"],
+        "visibility": "private"
+      },
+      "120363423486813798@g.us": {
+        "name": "In.Ropes Bali (2)",
+        "region": "bali",
+        "categories": ["rope"],
+        "visibility": "private"
+      },
+      "120363422330759828@g.us": {
+        "name": "ROPE JAMS - In.Ropes",
+        "region": "bali",
+        "categories": ["rope"],
+        "visibility": "private"
+      }
+    }
+  },
+  "telegram": {
+    "enabled": true,
+    "groups": {
+      "-1001736113161": {
+        "name": "CONTACT DOjO",
+        "region": "ubud",
+        "categories": ["dance"],
+        "visibility": "public"
+      },
+      "-1003433712344": {
+        "name": "Saturday Polina CI Jam",
+        "region": "ubud",
+        "categories": ["dance"],
+        "visibility": "public"
+      },
+      "-1001874250413": {
+        "name": "Liquid Contact",
+        "region": "bali",
+        "categories": ["dance"],
+        "visibility": "public"
+      },
+      "-1002150568466": {
+        "name": "CI Community Bali",
+        "region": "bali",
+        "categories": ["dance"],
+        "visibility": "public"
+      }
+    },
+    "forums": {
+      "-1002838336311": {
+        "name": "Ubud Tantra Jam Community",
+        "region": "ubud",
+        "categories": ["tantra"],
+        "visibility": "private",
+        "topics": {}
+      },
+      "-1002150568466": {
+        "name": "CI Community Bali",
+        "region": "bali",
+        "categories": ["dance"],
+        "visibility": "public",
+        "topics": {}
+      }
+    },
+    "excluded": {
+      "-1001395482966": "CI Monday, Wednesdays & Thursdays (Berlin, not Bali)"
+    }
+  }
+}

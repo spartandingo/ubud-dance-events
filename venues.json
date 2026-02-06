@@ -1,0 +1,58 @@
+{
+  "venues": {
+    "Paradiso": {
+      "name": "Paradiso Ubud",
+      "address": "Jl. Goutama Sel., Ubud, Bali",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Paradiso+Ubud+Bali",
+      "region": "ubud"
+    },
+    "Moksa Ubud": {
+      "name": "Moksa Plant-Based Cuisine & Permaculture Garden",
+      "address": "Puskesmas Ubud II, Ubud, Bali",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Moksa+Ubud+Bali",
+      "region": "ubud"
+    },
+    "Nalanda": {
+      "name": "Nalanda West Bali",
+      "address": "Tabanan, Bali",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Nalanda+West+Bali",
+      "region": "bali"
+    },
+    "AmrtaSiddhi": {
+      "name": "AmrtaSiddhi",
+      "address": "Ubud, Bali",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=AmrtaSiddhi+Ubud+Bali",
+      "region": "ubud"
+    },
+    "The Yoga Barn": {
+      "name": "The Yoga Barn",
+      "address": "Jl. Hanoman, Pengosekan, Ubud, Bali",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=The+Yoga+Barn+Ubud+Bali",
+      "region": "ubud"
+    },
+    "Yoga Barn": {
+      "name": "The Yoga Barn",
+      "address": "Jl. Hanoman, Pengosekan, Ubud, Bali",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=The+Yoga+Barn+Ubud+Bali",
+      "region": "ubud"
+    },
+    "Morabito": {
+      "name": "Morabito Art Villa",
+      "address": "Canggu, Bali",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Morabito+Art+Villa+Canggu+Bali",
+      "region": "bali"
+    },
+    "Nawa Community": {
+      "name": "Nawa Community Space",
+      "address": "Ubud, Bali", 
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Nawa+Community+Ubud+Bali",
+      "region": "ubud"
+    },
+    "Mullumbimby": {
+      "name": "Mullumbimby",
+      "address": "Mullumbimby, NSW",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=Mullumbimby+NSW+Australia",
+      "region": "northern-rivers"
+    }
+  }
+}
